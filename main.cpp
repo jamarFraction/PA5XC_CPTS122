@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "List.h"
 
 
 int main(int argc, const char * argv[]) {
@@ -7,13 +7,24 @@ int main(int argc, const char * argv[]) {
     
     cout << "Hello, World!\n" << endl;
     
-    cout << "What" << endl;
+    List newList;
+    
+    newList.Add(*makeNode("Week 1", 1000, "10/20/2017"));
+    
+    newList.Add(*makeNode("Week 1", 1000, "10/21/2017"));
+    
+    
+    
+    //newList.Add(*newNode);
+    
+   // system("pause");
+    
     
     //List newList();
     
     //
     
-    ListNode newNode();
+  
     
 //    string date = newNode.GetDate();
 //    
