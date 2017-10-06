@@ -1,116 +1,91 @@
 #ifndef List_h
 #define List_h
 
-#include <iostream>
 #include <string>
 
-
-using std::cout;
-using std::cin;
-using std::endl;
 using std::string;
 
-typedef struct listnode{
-    
-    string date;
-    string planName;
-    int goal;
-    listnode *nextDay;
-    
-
-}ListNode;
 
 class List{
     
-    private:
-    ListNode *pHead;
-    ListNode *pTail;
+public:
     
-    public:
-    //*******************************************************************************
-    //*******************************************************************************
+    struct ListNode{
+        
+        string date;
+        string planName;
+        int goalCalories;
+        ListNode *nextDay;
+        
+    };
+    
     //Constructors
     //Default constructor.. will get it's default values from the default ListNode constructor
     List(){
         
+        //default pointers
         pHead = NULL;
         pTail = NULL;
-        
-        
-    }
+    };
     
-    //copy constructor
-    List(List &copyList){
-        
-        //point this node's head to the passed in copyList head
-        pHead = copyList.pHead;
-        
-        //point this node's tail to the passed in copyList tail
-        pTail = copyList.pTail;
-        
-    }
-    //*******************************************************************************
-    //*******************************************************************************
+    //Copy Constructor
+    List(List &copyList);
+    
     //Deconstructors
-    
     //default desconstructor
     ~List(){
         
         //free the space..
         //is this neccessary?
-        free(pHead);
-        free(pTail);
+        
     }
-    //*******************************************************************************
-    //*******************************************************************************
+    
     //Setters
-    void Add(ListNode newDay){
-        
-        //Adding to an empty list
-        if(pHead == NULL && pTail == NULL){
-        
-            //point the head pointer to the address of the passed in ListNode
-            pHead = &newDay;
-            
-            //point the tail pointer to the address of the passed in ListNode
-            pTail = &newDay;
-            
-        }else{
-            //adding to non-empty list
-            //inset at pTail
-            
-            //set the current pTail's pNext to the passed in ListNode
-            pTail->nextDay = &newDay;
-            
-            //point pTail to the passed in ListNode
-            pTail = &newDay;
-            
-        }
-        
-    }
-    //*******************************************************************************
-    //*******************************************************************************
+    //Add function for adding new dates
+    void Add(ListNode *newDay);
+    
+    //Setter for the head pointer
+    void SetHead(ListNode *newDay);
+    
+    //Setter for the tail pointer
+    void SetTail(ListNode *newDay);
+    
+    //Setter for the next day
+    void SetNext(ListNode *newDay);
+    
+    
+    
     //Getters
+    //getter for pHead
+    ListNode* GetHead();
     
+    //getter for pHead
+    ListNode* GetTail();
     
+    //getter for the date
+    string GetDate(ListNode passedNode);
     
+    //getter for the plan name
+    string GetPlanName(ListNode passedNode);
     
+    //getter for the goal
+    int GetGoalCalories(ListNode passedNode);
     
-    
-    
-    
-    //*******************************************************************************
-    //*******************************************************************************
-
+    private:
+    ListNode *pHead;
+    ListNode *pTail;
     
     
 };
 
-//non-member
-ListNode *makeNode(string planName, int goal, string date);
-ListNode *makeNode();
 
 #endif /* List_h */
+
+//non-member
+//ListNode *makeNode(string planName, int goal, string date);
+//ListNode *makeNode();
+
+
 
 
 //class ListNode{
