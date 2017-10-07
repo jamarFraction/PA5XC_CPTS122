@@ -5,7 +5,6 @@
 #include <fstream>
 
 using std::ifstream;
-using ListNode = List::ListNode;
 
 class DietPlan{
     
@@ -35,12 +34,15 @@ class DietPlan{
     
     //Create Plan
     void CreatePlan(ifstream &input);
+    
+    //MakeNode
+    //ListNode* makeNode(string &planName, int &goal, string &date);
 };
 
 //non-member
 ifstream & operator >> (ifstream &lhs, List &rhs);
-ListNode *makeNode(string planName, int goal, string date);
-ListNode *makeNode();
+
+////ListNode *makeNode();
 
 
 

@@ -1,5 +1,12 @@
 #include "List.h"
-using ListNode = List::ListNode;
+//using ListNode = List::ListNode;
+List::List(ListNode *head, ListNode *tail){
+    
+    pHead = head;
+    
+    pTail = tail;
+    
+}
 
 //copy constructor
 List::List(List &copyList){
@@ -31,25 +38,24 @@ ListNode* List::GetTail(){
 string List::GetDate(ListNode passedNode){
     
     //return the value of the private data member
-    return passedNode.date;
+    return passedNode.GetDate();
     
 }
 
 string List::GetPlanName(ListNode passedNode){
     
     //return the value of the private data member
-    return passedNode.planName;
+    return passedNode.GetPlanName();
     
 }
 
 int List::GetGoalCalories(ListNode passedNode){
     
     //return the value of the private data member
-    return passedNode.goalCalories;
+    return passedNode.GetGoalCalories();
 }
 
 //Setters
-
 //setter for the head node
 void List::SetHead(ListNode *newDay){
     
@@ -69,37 +75,55 @@ void List::SetTail(ListNode *newDay){
 void List::Add(ListNode *newDay){
     
     //Adding to an empty list
-    if(this->GetHead() == NULL && this->GetTail() == NULL){
+    if(pHead == NULL && pTail == NULL){
         
         //point the head pointer to the address of the passed in ListNode
-        this->SetHead(newDay);
+        SetHead(newDay);
         
         
         //point the tail pointer to the address of the passed in ListNode
-        this->SetTail(newDay);
+        SetTail(newDay);
         
     }else{
         //adding to non-empty list
         //inset at pTail
         
         //set the current pTail's pNext to the passed in ListNode
-        this->SetNext(newDay);
+        
+        pTail->SetNext(newDay);
         
         //point pTail to the passed in ListNode
-        this->SetTail(newDay);
+        SetTail(newDay);
         
     }
     
 }
 
-
-void List::SetNext(ListNode *newDay){
+//Non-Member functions
+ListNode* List::makeNode(string planName, int goal, string date){
     
-    pTail->nextDay = newDay;
+    //declare and allocate space for a new ListNode
+    ListNode *newNode = (ListNode* )malloc(sizeof(ListNode));
     
+    //initialize the values of the new ListNode to the passed in ListNode values
+    //newNode = planName;
+    newNode->setPlanName(planName);
+    newNode->setGoalCalories(goal);
+    newNode->setDate(date);
+    
+    
+    //return the new ListNode
+    return newNode;
 }
 
-
+ListNode* List::makeNode(){
+    
+    //declare and allocate space for a new ListNode
+    ListNode *newNode = (ListNode* )malloc(sizeof(ListNode));
+    
+    //return the new ListNode
+    return newNode;
+}
 //void List::Add(ListNode newDay){
 //    
 //    //Adding to an empty list

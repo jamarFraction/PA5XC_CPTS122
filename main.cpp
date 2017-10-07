@@ -1,5 +1,4 @@
-#include "List.h"
-#include "DietPlan.h"
+#include "FitnessAppWrapper.h"
 #include <iostream>
 #include <fstream>
 
@@ -7,58 +6,18 @@ using std::cout;
 using std::cin;
 using std::endl;
 using std::ifstream;
-using ListNode = List::ListNode;
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
+
+    //create a new FitnessWrapperApp object
+    FitnessAppWrapper currentApplication;
     
-    //Menu option worker variable
-    int option = 0;
+    //run the application calling currentApplication's member function runApp()
+    currentApplication.runApp();
     
-    do{
-        
-        cout << "MENU\n1. Read in Diet Plan\n2. Oh, Don't be a jerk and press 2\n3. Exit"<< endl;
-        cin >> option;
-        
-        if(option == 1){
-            
-            //Start weekly plan read-in
-            ifstream input("dietPlans.txt");
-            
-            if (input.is_open()) // were we successful in opening the stream?
-            {
-                
-                //Create a new DietPlan object
-                DietPlan currentPlan;
-                
-                //Send the stream and the list to the processor function
-                currentPlan.CreatePlan(input);
-                
-                cout << "all done."<<endl;
-                
-                
-                
-//                input >> r1; // we overloaded the stream extraction (>>)
-//                // operator to work with Rational objects
-//                cout << r1.getNumerator() << "/" <<
-//                r1.getDenominator() << endl;
-            }
-            
-            
-        }else if(option == 2){
-            
-        }
-        
-        
-        
-        
-    }while(option != 3);
-    
-    
-    
-    
-    
-    
+    return 0;
+}
+
     
    // List newList;
     
@@ -112,5 +71,4 @@ int main(int argc, const char * argv[]) {
     
     
     
-    return 0;
-}
+ 

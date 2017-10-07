@@ -1,32 +1,24 @@
 #ifndef List_h
 #define List_h
+#include "ListNode.h"
 
 #include <string>
+
 
 using std::string;
 
 
 class List{
+
+private:
+    ListNode *pHead;
+    ListNode *pTail;
     
 public:
-    
-    struct ListNode{
-        
-        string date;
-        string planName;
-        int goalCalories;
-        ListNode *nextDay;
-        
-    };
-    
+
     //Constructors
-    //Default constructor.. will get it's default values from the default ListNode constructor
-    List(){
-        
-        //default pointers
-        pHead = NULL;
-        pTail = NULL;
-    };
+    //Default constructor.. the head and tail should be null pointers
+    List(ListNode *head = NULL, ListNode *tail = NULL);
     
     //Copy Constructor
     List(List &copyList);
@@ -53,8 +45,6 @@ public:
     //Setter for the next day
     void SetNext(ListNode *newDay);
     
-    
-    
     //Getters
     //getter for pHead
     ListNode* GetHead();
@@ -62,24 +52,51 @@ public:
     //getter for pHead
     ListNode* GetTail();
     
-    //getter for the date
+    //getter to retrieve the passed in ListNode's date
     string GetDate(ListNode passedNode);
     
-    //getter for the plan name
+    //getter to retrieve the passed in ListNode's planName
     string GetPlanName(ListNode passedNode);
     
-    //getter for the goal
+    //getter to retrieve the passed in ListNode's goalCalories
     int GetGoalCalories(ListNode passedNode);
     
-    private:
-    ListNode *pHead;
-    ListNode *pTail;
-    
-    
-};
-
+    ListNode* makeNode(string planName, int goal, string date);
+    ListNode* makeNode();
+    };
 
 #endif /* List_h */
+
+
+
+
+
+
+
+
+
+    
+//    //getter for the date
+//    string GetDate(ListNode passedNode);
+//
+//    //getter for the plan name
+//    string GetPlanName(ListNode passedNode);
+//
+//    //getter for the goal
+//    int GetGoalCalories(ListNode passedNode);
+    
+    //    struct ListNode{
+    //
+    //        string date;
+    //        string planName;
+    //        int goalCalories;
+    //        ListNode *nextDay;
+    //
+    //    };
+
+
+
+
 
 //non-member
 //ListNode *makeNode(string planName, int goal, string date);
